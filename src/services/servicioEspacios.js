@@ -21,3 +21,15 @@ export async function guardarEspacio(espacio) {
         throw error
     }
 }
+
+// Modifica un espacio existente: PUT /espacios/{id}
+// El back devuelve el espacio ya actualizado
+export async function modificarEspacio(id, espacio) {
+    try {
+        const respuesta = await clienteApi.put(RUTA + '/' + id, espacio)
+        return respuesta.data
+    } catch (error) {
+        console.error('Error al modificar el espacio:', error)
+        throw error
+    }
+}
