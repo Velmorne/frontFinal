@@ -32,8 +32,8 @@ export function RegistroUsuario() {
     if (usuario.name.trim() === '') {
       nuevosErrores.name = 'Los nombres son obligatorios'
     }
-    if (!/^\S+@\S+\.\S+$/.test(usuario.name)) {
-      nuevosErrores.name = 'Ingrese un correo válido'
+    if (!/^\S+@\S+\.\S+$/.test(usuario.email)) {
+      nuevosErrores.email = 'Ingrese un correo válido'
     }
     if (usuario.password.length < 6) {
       nuevosErrores.password = 'La contraseña debe tener mínimo 6 caracteres'
