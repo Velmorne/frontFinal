@@ -39,8 +39,11 @@ export function RegistroReserva() {
     const { name, value } = evento.target
     setReserva({ ...reserva, [name]: value })
   }
+<<<<<<< Updated upstream
 
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 function validar() {
   const nuevosErrores = {}
   const ahora = new Date()
