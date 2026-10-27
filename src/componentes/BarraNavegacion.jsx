@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSesion } from '../contexto/ContextoSesion.jsx'
+import { Logo } from './Logo.jsx'
 
 // Barra superior que se muestra en TODAS las páginas privadas.
 // Se pinta una sola vez desde LayoutPrivado, no desde cada página.
@@ -28,8 +29,8 @@ export function BarraNavegacion() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top barra-principal">
       <div className="container">
-        <Link to="/home" className="navbar-brand d-flex align-items-center gap-2 fw-bold" onClick={cerrarMenu}>
-          <i className="bi bi-buildings-fill fs-4"></i> Paseo App
+        <Link to="/home" className="navbar-brand" onClick={cerrarMenu}>
+          <Logo fondo="oscuro" />
         </Link>
 
         <button

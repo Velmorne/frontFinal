@@ -1,12 +1,64 @@
 :root {
-  --color-primario: #1f6f8b;
-  --color-primario-oscuro: #164f63;
-  --color-acento: #e9a23b;
+  /* Paleta inspirada en las referencias: azul Bootstrap, grises suaves */
+  --color-primario: #0d6efd;
+  --color-primario-oscuro: #0b5ed7;
+  --color-primario-suave: rgba(13, 110, 253, 0.1);
+  --color-acento: #6ea8fe;
+  --color-texto: #212529;
+  --color-texto-suave: #6c757d;
+  --color-fondo: #f6f8fa;
+  --radio-tarjeta: 1rem;
+  --radio-control: 0.5rem;
+  --sombra-suave: 0 0.25rem 1rem rgba(0, 0, 0, 0.06);
+  --sombra-hover: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.12);
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background-color: #f6f8fa;
+  font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+/* Títulos más gruesos, como en las referencias */
+h1, h2, h3, .display-5, .navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+h4, h5, .card-title {
+  font-weight: 700;
+}
+.text-muted {
+  color: var(--color-texto-suave) !important;
+}
+
+/* Botones y campos con esquinas redondeadas */
+.btn {
+  border-radius: var(--radio-control);
+  font-weight: 600;
+}
+.form-control,
+.form-select,
+.input-group-text {
+  border-color: #dee2e6;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+.input-group > :first-child {
+  border-top-left-radius: var(--radio-control);
+  border-bottom-left-radius: var(--radio-control);
+}
+.input-group > .form-control:last-of-type,
+.input-group > .form-select:last-of-type {
+  border-top-right-radius: var(--radio-control) !important;
+  border-bottom-right-radius: var(--radio-control) !important;
+}
+
+/* Tarjetas: blancas, sin borde, esquinas redondeadas y sombra suave */
+.card {
+  border: none;
+  border-radius: var(--radio-tarjeta);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
 }
 
 /* Botones con el color de la marca */
@@ -38,7 +90,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10, 30, 45, 0.85) 0%, rgba(10, 30, 45, 0.35) 100%);
+  background: linear-gradient(90deg, rgba(8, 30, 70, 0.85) 0%, rgba(8, 30, 70, 0.3) 100%);
 }
 .portada .container {
   position: relative;
@@ -57,7 +109,7 @@ body {
 }
 .tarjeta-zona:hover {
   transform: translateY(-6px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: var(--sombra-hover) !important;
 }
 .tarjeta-zona:hover img {
   transform: scale(1.06);
@@ -71,7 +123,7 @@ body {
 }
 .tarjeta-accion:hover {
   transform: translateY(-4px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12) !important;
+  box-shadow: var(--sombra-hover) !important;
 }
 .icono-circulo {
   width: 72px;
@@ -81,7 +133,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  background-color: rgba(31, 111, 139, 0.12);
+  background-color: var(--color-primario-suave);
   color: var(--color-primario);
 }
 
@@ -99,7 +151,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 30, 45, 0.3) 0%, rgba(10, 30, 45, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(8, 30, 70, 0.2) 0%, rgba(8, 30, 70, 0.85) 100%);
 }
 .panel-imagen > div {
   position: relative;
@@ -111,7 +163,7 @@ body {
 .form-control:focus,
 .form-select:focus {
   border-color: var(--color-primario);
-  box-shadow: 0 0 0 0.2rem rgba(31, 111, 139, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
 }
 
 /* Barra de navegación global (LayoutPrivado) */
@@ -130,4 +182,26 @@ body {
 }
 .con-barra .portada {
   min-height: calc(85vh - var(--alto-barra));
+}
+
+/* Logo de la marca */
+.logo-icono {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primario);
+  color: #fff;
+  font-size: 1.05rem;
+}
+.logo-grande .logo-icono {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.75rem;
+  font-size: 1.35rem;
+}
+.logo-grande .fw-bold {
+  font-size: 1.35rem;
 }
