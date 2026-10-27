@@ -14,9 +14,9 @@ export function RegistroUsuario() {
   const { guardarSesion } = useSesion()
 
   const [usuario, setUsuario] = useState({
-    nombre: '',
-    correo: '',
-    contraseña: '',
+    name: '',
+    email: '',
+    password: '',
     rol: '',
   })
   const [errores, setErrores] = useState({})
@@ -29,14 +29,14 @@ export function RegistroUsuario() {
 
   function validar() {
     const nuevosErrores = {}
-    if (usuario.nombre.trim() === '') {
-      nuevosErrores.nombre = 'Los nombres son obligatorios'
+    if (usuario.name.trim() === '') {
+      nuevosErrores.name = 'Los nombres son obligatorios'
     }
-    if (!/^\S+@\S+\.\S+$/.test(usuario.correo)) {
-      nuevosErrores.correo = 'Ingrese un correo válido'
+    if (!/^\S+@\S+\.\S+$/.test(usuario.name)) {
+      nuevosErrores.name = 'Ingrese un correo válido'
     }
-    if (usuario.contraseña.length < 6) {
-      nuevosErrores.contraseña = 'La contraseña debe tener mínimo 6 caracteres'
+    if (usuario.password.length < 6) {
+      nuevosErrores.password = 'La contraseña debe tener mínimo 6 caracteres'
     }
     if (usuario.rol === '') {
       nuevosErrores.rol = 'Seleccione un rol'
@@ -98,13 +98,13 @@ export function RegistroUsuario() {
             <span className="input-group-text"><i className="bi bi-person"></i></span>
             <input
               type="text"
-              name="nombre"
+              name="name"
               placeholder="Juan Pérez"
-              className={`form-control ${errores.nombre ? 'is-invalid' : ''}`}
-              value={usuario.nombre}
+              className={`form-control ${errores.name ? 'is-invalid' : ''}`}
+              value={usuario.name}
               onChange={manejarCambio}
             />
-            <div className="invalid-feedback">{errores.nombre}</div>
+            <div className="invalid-feedback">{errores.name}</div>
           </div>
         </div>
 
@@ -114,13 +114,13 @@ export function RegistroUsuario() {
             <span className="input-group-text"><i className="bi bi-envelope"></i></span>
             <input
               type="email"
-              name="correo"
+              name="email"
               placeholder="correo@ejemplo.com"
-              className={`form-control ${errores.correo ? 'is-invalid' : ''}`}
-              value={usuario.correo}
+              className={`form-control ${errores.email ? 'is-invalid' : ''}`}
+              value={usuario.email}
               onChange={manejarCambio}
             />
-            <div className="invalid-feedback">{errores.correo}</div>
+            <div className="invalid-feedback">{errores.email}</div>
           </div>
         </div>
 
@@ -130,13 +130,13 @@ export function RegistroUsuario() {
             <span className="input-group-text"><i className="bi bi-lock"></i></span>
             <input
               type="password"
-              name="contraseña"
+              name="password"
               placeholder="Mínimo 6 caracteres"
-              className={`form-control ${errores.contraseña ? 'is-invalid' : ''}`}
-              value={usuario.contraseña}
+              className={`form-control ${errores.password ? 'is-invalid' : ''}`}
+              value={usuario.password}
               onChange={manejarCambio}
             />
-            <div className="invalid-feedback">{errores.contraseña}</div>
+            <div className="invalid-feedback">{errores.password}</div>
           </div>
         </div>
 

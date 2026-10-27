@@ -12,7 +12,7 @@ export function Login() {
   const navegar = useNavigate()
   const { estaLogueado, guardarSesion } = useSesion()
 
-  const [datos, setDatos] = useState({ correo: '', contraseña: '' })
+  const [datos, setDatos] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [enviando, setEnviando] = useState(false)
 
@@ -32,7 +32,7 @@ export function Login() {
     setEnviando(true)
 
     try {
-      const usuario = await iniciarSesion(datos.correo, datos.contraseña)
+      const usuario = await iniciarSesion(datos.email, datos.password)
       guardarSesion(usuario)
       navegar('/home')
     } catch (error) {
@@ -60,10 +60,10 @@ export function Login() {
             <span className="input-group-text"><i className="bi bi-envelope"></i></span>
             <input
               type="email"
-              name="correo"
+              name="email"
               placeholder="correo@ejemplo.com"
               className="form-control"
-              value={datos.correo}
+              value={datos.email}
               onChange={manejarCambio}
               required
             />
@@ -76,9 +76,9 @@ export function Login() {
             <span className="input-group-text"><i className="bi bi-lock"></i></span>
             <input
               type="password"
-              name="contraseña"
+              name="password"
               className="form-control"
-              value={datos.contraseña}
+              value={datos.password}
               onChange={manejarCambio}
               required
             />

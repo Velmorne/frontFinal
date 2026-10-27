@@ -8,9 +8,9 @@ export function RegistroEspacio() {
   const navegar = useNavigate()
 
   const [espacio, setEspacio] = useState({
-    nombre: '',
-    descripcion: '',
-    foto: '',
+    name: '',
+    description: '',
+    photo: '',
     aforo: '',
   })
   const [errores, setErrores] = useState({})
@@ -22,14 +22,14 @@ export function RegistroEspacio() {
 
   function validar() {
     const nuevosErrores = {}
-    if (espacio.nombre.trim() === '') {
-      nuevosErrores.nombre = 'El nombre es obligatorio'
+    if (espacio.name.trim() === '') {
+      nuevosErrores.name = 'El nombre es obligatorio'
     }
-    if (espacio.descripcion.trim().length < 10) {
-      nuevosErrores.descripcion = 'La descripción debe tener mínimo 10 caracteres'
+    if (espacio.description.trim().length < 10) {
+      nuevosErrores.description = 'La descripción debe tener mínimo 10 caracteres'
     }
-    if (!/^https?:\/\/\S+$/.test(espacio.foto)) {
-      nuevosErrores.foto = 'Ingrese una URL válida (http:// o https://)'
+    if (!/^https?:\/\/\S+$/.test(espacio.photo)) {
+      nuevosErrores.photo = 'Ingrese una URL válida (http:// o https://)'
     }
     if (espacio.aforo === '' || Number(espacio.aforo) <= 0) {
       nuevosErrores.aforo = 'El aforo debe ser un número mayor a 0'
@@ -64,13 +64,13 @@ export function RegistroEspacio() {
             <span className="input-group-text"><i className="bi bi-door-open"></i></span>
             <input
               type="text"
-              name="nombre"
+              name="name"
               placeholder="Salón social"
-              className={`form-control ${errores.nombre ? 'is-invalid' : ''}`}
-              value={espacio.nombre}
+              className={`form-control ${errores.name ? 'is-invalid' : ''}`}
+              value={espacio.name}
               onChange={manejarCambio}
             />
-            <div className="invalid-feedback">{errores.nombre}</div>
+            <div className="invalid-feedback">{errores.name}</div>
           </div>
         </div>
 
@@ -79,14 +79,14 @@ export function RegistroEspacio() {
           <div className="input-group has-validation">
             <span className="input-group-text"><i className="bi bi-card-text"></i></span>
             <textarea
-              name="descripcion"
+              name="description"
               rows="3"
               placeholder="Describe el espacio y sus condiciones de uso"
-              className={`form-control ${errores.descripcion ? 'is-invalid' : ''}`}
-              value={espacio.descripcion}
+              className={`form-control ${errores.description ? 'is-invalid' : ''}`}
+              value={espacio.description}
               onChange={manejarCambio}
             />
-            <div className="invalid-feedback">{errores.descripcion}</div>
+            <div className="invalid-feedback">{errores.description}</div>
           </div>
         </div>
 
@@ -96,13 +96,13 @@ export function RegistroEspacio() {
             <span className="input-group-text"><i className="bi bi-image"></i></span>
             <input
               type="url"
-              name="foto"
+              name="photo"
               placeholder="https://..."
-              className={`form-control ${errores.foto ? 'is-invalid' : ''}`}
-              value={espacio.foto}
+              className={`form-control ${errores.photo ? 'is-invalid' : ''}`}
+              value={espacio.photo}
               onChange={manejarCambio}
             />
-            <div className="invalid-feedback">{errores.foto}</div>
+            <div className="invalid-feedback">{errores.photo}</div>
           </div>
         </div>
 
