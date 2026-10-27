@@ -16,7 +16,6 @@ export function Login() {
   const [error, setError] = useState('')
   const [enviando, setEnviando] = useState(false)
 
-  // Si ya hay sesion no tiene sentido ver el login
   if (estaLogueado) {
     return <Navigate to="/home" replace />
   }

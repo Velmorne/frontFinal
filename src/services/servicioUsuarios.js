@@ -1,9 +1,6 @@
-// Importamos el cliente de axios que ya tiene configurada la URL base del API
 import { clienteApi } from './clienteApi.js'
 
-// Definimos la ruta (endpoint) del recurso usuarios en el backend
 const RUTA = '/usuarios'
-
 
 export async function guardarUsuario(usuario) {
     try {
@@ -16,7 +13,6 @@ export async function guardarUsuario(usuario) {
     }
 }
 
-
 export async function listarUsuarios() {
     try {
         const respuesta = await clienteApi.get(RUTA)
@@ -27,7 +23,6 @@ export async function listarUsuarios() {
     }
 }
 
-
 export async function modificarUsuario(id, usuario) {
     try {
         const respuesta = await clienteApi.put(RUTA + '/' + id, usuario)
@@ -37,7 +32,6 @@ export async function modificarUsuario(id, usuario) {
         throw error
     }
 }
-
 
 export async function eliminarUsuario(id) {
     try {
