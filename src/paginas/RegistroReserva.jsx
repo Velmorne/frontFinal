@@ -39,51 +39,29 @@ export function RegistroReserva() {
     const { name, value } = evento.target
     setReserva({ ...reserva, [name]: value })
   }
-<<<<<<< Updated upstream
 
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
-function validar() {
-  const nuevosErrores = {}
-  const ahora = new Date()
-  const hoy = [
-    ahora.getFullYear(),
-    String(ahora.getMonth() + 1).padStart(2, '0'),
-    String(ahora.getDate()).padStart(2, '0'),
-  ].join('-')
-
-  if (!reserva.espacioId) {
-    nuevosErrores.espacioId = 'Debe seleccionar un espacio'
-=======
   function validar() {
     const nuevosErrores = {}
-    const hoy = new Date().toISOString().split('T')[0]
+    const ahora = new Date()
+    const hoy = [
+      ahora.getFullYear(),
+      String(ahora.getMonth() + 1).padStart(2, '0'),
+      String(ahora.getDate()).padStart(2, '0'),
+    ].join('-')
 
-    if (reserva.espacioId === '') {
-      nuevosErrores.espacioId = 'Seleccione un espacio'
+    if (!reserva.espacioId) {
+      nuevosErrores.espacioId = 'Debe seleccionar un espacio'
     }
-    if (reserva.fecha === '') {
+    if (!reserva.fecha) {
       nuevosErrores.fecha = 'La fecha es obligatoria'
     } else if (reserva.fecha < hoy) {
       nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy'
     }
-    if (reserva.tiempo === '') {
+    if (!reserva.tiempo) {
       nuevosErrores.tiempo = 'La hora es obligatoria'
     }
     return nuevosErrores
->>>>>>> 31aafd184d10e59f41545ebc83a130ab95f9d18f
   }
-  if (!reserva.fecha) {
-    nuevosErrores.fecha = 'La fecha es obligatoria'
-  } else if (reserva.fecha < hoy) {
-    nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy'
-  }
-  if (!reserva.tiempo) {
-    nuevosErrores.tiempo = 'La hora es obligatoria'
-  }
-  return nuevosErrores
-}
 
   // 3. Conectar con el backend
   async function manejarEnvio(evento) {
