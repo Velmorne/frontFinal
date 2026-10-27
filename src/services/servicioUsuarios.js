@@ -2,7 +2,7 @@
 import { clienteApi } from './clienteApi.js'
 
 // Definimos la ruta (endpoint) del recurso usuarios en el backend
-const RUTA = '/paseoapi/v1/usuarios'
+const RUTA = '/usuarios'
 
 
 export async function guardarUsuario(usuario) {

@@ -13,11 +13,11 @@ export function RegistroReserva() {
 
   // 1. Añadimos espacioId al estado
   const [reserva, setReserva] = useState({
-    espacioId: '', 
+    espacioId: '',
     fecha: '',
     tiempo: '',
   })
-  
+
   const [espacios, setEspacios] = useState([])
   const [errores, setErrores] = useState({})
   const [errorApi, setErrorApi] = useState('')
@@ -40,6 +40,7 @@ export function RegistroReserva() {
     setReserva({ ...reserva, [name]: value })
   }
 
+<<<<<<< HEAD
 function validar() {
   const nuevosErrores = {}
   const ahora = new Date()
@@ -51,6 +52,24 @@ function validar() {
 
   if (!reserva.espacioId) {
     nuevosErrores.espacioId = 'Debe seleccionar un espacio'
+=======
+  function validar() {
+    const nuevosErrores = {}
+    const hoy = new Date().toISOString().split('T')[0]
+
+    if (reserva.espacioId === '') {
+      nuevosErrores.espacioId = 'Seleccione un espacio'
+    }
+    if (reserva.fecha === '') {
+      nuevosErrores.fecha = 'La fecha es obligatoria'
+    } else if (reserva.fecha < hoy) {
+      nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy'
+    }
+    if (reserva.tiempo === '') {
+      nuevosErrores.tiempo = 'La hora es obligatoria'
+    }
+    return nuevosErrores
+>>>>>>> 31aafd184d10e59f41545ebc83a130ab95f9d18f
   }
   if (!reserva.fecha) {
     nuevosErrores.fecha = 'La fecha es obligatoria'
@@ -68,7 +87,7 @@ function validar() {
     evento.preventDefault()
     const nuevosErrores = validar()
     setErrores(nuevosErrores)
-    
+
     if (Object.keys(nuevosErrores).length > 0) {
       return null
     }
@@ -76,11 +95,12 @@ function validar() {
     setErrorApi('')
     try {
       // Ensamblamos el objeto tal como lo espera Java
+
       const reservaAEnviar = {
-        espacioId: Number(reserva.espacioId),
-        usuarioId: usuario.id, // Viene del contexto de sesión
-        fecha: reserva.fecha,
-        tiempo: reserva.tiempo
+        date: reserva.fecha,
+        time: reserva.tiempo,
+        usuario: { id: usuario.id },   
+        espacio: { id: reserva.espacioId } 
       }
 
       await guardarReserva(reservaAEnviar)
@@ -106,7 +126,7 @@ function validar() {
       {errorApi && <div className="alert alert-danger">{errorApi}</div>}
 
       <form onSubmit={manejarEnvio} noValidate>
-        
+
         {/* Nuevo campo: Selector de Espacios */}
         <div className="mb-3">
           <label className="form-label fw-semibold">Espacio</label>
@@ -121,7 +141,7 @@ function validar() {
               <option value="">Seleccione un espacio...</option>
               {espacios.map(espacio => (
                 <option key={espacio.id} value={espacio.id}>
-                  {espacio.nombre} (Aforo: {espacio.aforo})
+                  {espacio.name} (Aforo: {espacio.aforo})
                 </option>
               ))}
             </select>

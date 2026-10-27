@@ -54,7 +54,7 @@ export function Home() {
           </Link>
           <div className="d-flex align-items-center gap-2">
             <span className="text-white-50 small d-none d-md-inline me-2">
-              <i className="bi bi-person-circle me-1"></i>{usuario.nombres} · {usuario.rol}
+              <i className="bi bi-person-circle me-1"></i>{usuario.name} · {usuario.rol}
             </span>
             {/* Solo el administrador ve el boton de espacios */}
             {esAdministrador && (
