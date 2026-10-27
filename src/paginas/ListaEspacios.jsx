@@ -57,14 +57,14 @@ export function ListaEspacios() {
             <div className="col-12 col-md-6 col-lg-4" key={espacio.id}>
               <div className="card h-100 shadow-sm border-0">
                 <img 
-                  src={espacio.foto} 
+                  src={espacio.photo} 
                   className="card-img-top" 
-                  alt={espacio.nombre} 
+                  alt={espacio.name} 
                   style={{ height: '200px', objectFit: 'cover' }}
                 />
                 <div className="card-body">
-                  <h5 className="card-title fw-bold">{espacio.nombre}</h5>
-                  <p className="card-text text-muted mb-3">{espacio.descripcion}</p>
+                  <h5 className="card-title fw-bold">{espacio.name}</h5>
+                  <p className="card-text text-muted mb-3">{espacio.description}</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <span className="badge bg-light text-dark border">
                       <i className="bi bi-people me-1"></i> Aforo: {espacio.aforo}
