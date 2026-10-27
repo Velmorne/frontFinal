@@ -151,7 +151,6 @@ export function RegistroUsuario() {
               onChange={manejarCambio}
             >
               <option value="">Seleccione...</option>
-              <option value="ADMINISTRADOR">Administrador</option>
               <option value="USUARIO">Usuario</option>
             </select>
             <div className="invalid-feedback">{errores.rol}</div>
