@@ -40,23 +40,28 @@ export function RegistroReserva() {
     setReserva({ ...reserva, [name]: value })
   }
 
-  function validar() {
-    const nuevosErrores = {}
-    const hoy = new Date().toISOString().split('T')[0]
-    
-    if (reserva.espacioId === '') {
-      nuevosErrores.espacioId = 'Seleccione un espacio'
-    }
-    if (reserva.fecha === '') {
-      nuevosErrores.fecha = 'La fecha es obligatoria'
-    } else if (reserva.fecha < hoy) {
-      nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy'
-    }
-    if (reserva.tiempo === '') {
-      nuevosErrores.tiempo = 'La hora es obligatoria'
-    }
-    return nuevosErrores
+function validar() {
+  const nuevosErrores = {}
+  const ahora = new Date()
+  const hoy = [
+    ahora.getFullYear(),
+    String(ahora.getMonth() + 1).padStart(2, '0'),
+    String(ahora.getDate()).padStart(2, '0'),
+  ].join('-')
+
+  if (!reserva.espacioId) {
+    nuevosErrores.espacioId = 'Debe seleccionar un espacio'
   }
+  if (!reserva.fecha) {
+    nuevosErrores.fecha = 'La fecha es obligatoria'
+  } else if (reserva.fecha < hoy) {
+    nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy'
+  }
+  if (!reserva.tiempo) {
+    nuevosErrores.tiempo = 'La hora es obligatoria'
+  }
+  return nuevosErrores
+}
 
   // 3. Conectar con el backend
   async function manejarEnvio(evento) {
