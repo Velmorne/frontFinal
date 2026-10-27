@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSesion } from '../contexto/ContextoSesion.jsx'
 
 const IMAGEN_PORTADA = 'https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1800&q=80'
@@ -22,13 +22,8 @@ const zonas = [
 ]
 
 export function Home() {
-  const navegar = useNavigate()
-  const { usuario, esAdministrador, cerrarSesion } = useSesion()
-
-  function salir() {
-    cerrarSesion()
-    navegar('/login')
-  }
+  // La barra de navegación ahora vive en LayoutPrivado
+  const { esAdministrador } = useSesion()
 
   function pintarZona(zona) {
     return (
@@ -46,32 +41,6 @@ export function Home() {
 
   return (
     <div>
-      {/* Barra de navegación */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75 fixed-top">
-        <div className="container">
-          <Link to="/home" className="navbar-brand d-flex align-items-center gap-2 fw-bold">
-            <i className="bi bi-buildings-fill fs-4"></i> Paseo App
-          </Link>
-          <div className="d-flex align-items-center gap-2">
-            <span className="text-white-50 small d-none d-md-inline me-2">
-              <i className="bi bi-person-circle me-1"></i>{usuario.name} · {usuario.rol}
-            </span>
-            {/* Solo el administrador ve el boton de espacios */}
-            {esAdministrador && (
-              <Link to="/espacios" className="btn btn-outline-light btn-sm">
-                <i className="bi bi-door-open me-1"></i>Espacios
-              </Link>
-            )}
-            <Link to="/reservas" className="btn btn-outline-light btn-sm">
-              <i className="bi bi-calendar-check me-1"></i>Reservas
-            </Link>
-            <button type="button" onClick={salir} className="btn btn-light btn-sm">
-              <i className="bi bi-box-arrow-right me-1"></i>Salir
-            </button>
-          </div>
-        </div>
-      </nav>
-
       {/* Portada */}
       <header className="portada" style={{ backgroundImage: `url(${IMAGEN_PORTADA})` }}>
         <div className="container">
