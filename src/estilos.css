@@ -113,3 +113,21 @@ body {
   border-color: var(--color-primario);
   box-shadow: 0 0 0 0.2rem rgba(31, 111, 139, 0.25);
 }
+
+/* Barra de navegación global (LayoutPrivado) */
+:root {
+  --alto-barra: 56px;
+}
+.barra-principal .nav-link.active {
+  color: #fff;
+  border-bottom: 2px solid var(--color-acento);
+}
+
+/* En las páginas privadas la barra ocupa espacio arriba:
+   el formulario con imagen llena solo lo que queda de pantalla */
+.con-barra .panel-formulario {
+  min-height: calc(100vh - var(--alto-barra));
+}
+.con-barra .portada {
+  min-height: calc(85vh - var(--alto-barra));
+}

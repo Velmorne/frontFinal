@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ProveedorSesion } from './contexto/ContextoSesion'
 import { RutaPrivada } from './rutas/RutaPrivada'
 import { RutaPorRol } from './rutas/RutaPorRol'
+import { LayoutPrivado } from './componentes/LayoutPrivado'
 import { RegistroUsuario } from './paginas/RegistroUsuario'
 import { Login } from './paginas/Login'
 import { Home } from './paginas/Home'
@@ -20,13 +21,16 @@ export function App() {
 
           {/* Rutas privadas: solo usuarios logueados */}
           <Route element={<RutaPrivada />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/reservas" element={<RegistroReserva />} />
-            <Route path="/listaespacios" element={<ListaEspacios />} />
+            {/* LayoutPrivado pinta la barra de navegación en todas estas páginas */}
+            <Route element={<LayoutPrivado />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/reservas" element={<RegistroReserva />} />
+              <Route path="/listaespacios" element={<ListaEspacios />} />
 
-            {/* Rutas por rol: solo ADMINISTRADOR */}
-            <Route element={<RutaPorRol rolesPermitidos={['ADMINISTRADOR']} />}>
-              <Route path="/espacios" element={<RegistroEspacio />} />
+              {/* Rutas por rol: solo ADMINISTRADOR */}
+              <Route element={<RutaPorRol rolesPermitidos={['ADMINISTRADOR']} />}>
+                <Route path="/espacios" element={<RegistroEspacio />} />
+              </Route>
             </Route>
           </Route>
 
