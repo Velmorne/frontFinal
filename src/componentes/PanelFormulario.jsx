@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Logo } from './Logo.jsx'
 
 // Layout reutilizable: imagen a la izquierda, formulario a la derecha
 export function PanelFormulario({ imagen, titulo, subtitulo, enlaceVolver, children }) {
@@ -17,9 +18,8 @@ export function PanelFormulario({ imagen, titulo, subtitulo, enlaceVolver, child
 
         <div className="col-lg-6 d-flex align-items-center justify-content-center p-4 p-md-5 bg-white">
           <div className="w-100" style={{ maxWidth: '480px' }}>
-            <div className="d-flex align-items-center gap-2 mb-4">
-              <i className="bi bi-buildings-fill fs-2 texto-marca"></i>
-              <span className="fs-4 fw-bold texto-marca">Paseo App</span>
+            <div className="mb-4">
+              <Logo fondo="claro" grande />
             </div>
 
             {enlaceVolver && (

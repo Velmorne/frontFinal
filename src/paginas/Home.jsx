@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useSesion } from '../contexto/ContextoSesion.jsx'
 
-const IMAGEN_PORTADA = 'https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1800&q=80'
+// Foto: Sanju Pandita en Unsplash (licencia Unsplash, uso libre)
+const IMAGEN_PORTADA = 'https://images.unsplash.com/photo-1721222204126-e7042f2893b1?w=1800&q=80'
 
 const zonas = [
   {
@@ -145,18 +146,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Pie de página */}
-      <footer className="bg-dark text-white py-4">
-        <div className="container d-flex flex-wrap justify-content-between align-items-center gap-3">
-          <div className="d-flex align-items-center gap-2 fw-bold">
-            <i className="bi bi-buildings-fill fs-4"></i> Paseo App
-          </div>
-          <div className="text-white-50 small">
-            <i className="bi bi-geo-alt me-1"></i>Sabaneta, Antioquia, Colombia
-            <span className="mx-2">|</span>© 2026 Todos los derechos reservados
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
