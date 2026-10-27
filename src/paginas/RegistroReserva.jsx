@@ -39,11 +39,7 @@ export function RegistroReserva() {
     const { name, value } = evento.target
     setReserva({ ...reserva, [name]: value })
   }
-<<<<<<< Updated upstream
-
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
+  
 function validar() {
   const nuevosErrores = {}
   const ahora = new Date()
@@ -55,24 +51,6 @@ function validar() {
 
   if (!reserva.espacioId) {
     nuevosErrores.espacioId = 'Debe seleccionar un espacio'
-=======
-  function validar() {
-    const nuevosErrores = {}
-    const hoy = new Date().toISOString().split('T')[0]
-
-    if (reserva.espacioId === '') {
-      nuevosErrores.espacioId = 'Seleccione un espacio'
-    }
-    if (reserva.fecha === '') {
-      nuevosErrores.fecha = 'La fecha es obligatoria'
-    } else if (reserva.fecha < hoy) {
-      nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy'
-    }
-    if (reserva.tiempo === '') {
-      nuevosErrores.tiempo = 'La hora es obligatoria'
-    }
-    return nuevosErrores
->>>>>>> 31aafd184d10e59f41545ebc83a130ab95f9d18f
   }
   if (!reserva.fecha) {
     nuevosErrores.fecha = 'La fecha es obligatoria'
