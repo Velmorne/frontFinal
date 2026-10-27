@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useSesion } from '../contexto/ContextoSesion.jsx'
 
-// Foto: Sanju Pandita en Unsplash (licencia Unsplash, uso libre)
 const IMAGEN_PORTADA = 'https://images.unsplash.com/photo-1721222204126-e7042f2893b1?w=1800&q=80'
 
 const zonas = [
@@ -23,7 +22,6 @@ const zonas = [
 ]
 
 export function Home() {
-  // La barra de navegación ahora vive en LayoutPrivado
   const { esAdministrador } = useSesion()
 
   function pintarZona(zona) {
@@ -42,7 +40,6 @@ export function Home() {
 
   return (
     <div>
-      {/* Portada */}
       <header className="portada" style={{ backgroundImage: `url(${IMAGEN_PORTADA})` }}>
         <div className="container">
           <div className="col-lg-7">
@@ -68,7 +65,6 @@ export function Home() {
         </div>
       </header>
 
-      {/* Zonas comunes */}
       <section className="py-5">
         <div className="container py-4">
           <div className="text-center mb-5">
@@ -81,7 +77,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Acciones principales */}
       <section className="py-5 bg-white">
         <div className="container py-4">
           <div className="text-center mb-5">
@@ -123,7 +118,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Beneficios */}
       <section className="py-5">
         <div className="container py-4">
           <div className="row g-4 text-center">

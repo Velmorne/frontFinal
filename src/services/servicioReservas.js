@@ -1,6 +1,6 @@
 import { clienteApi } from './clienteApi.js'
 
-const RUTA = '/reservas' // Ajusta si tu Controller en Java tiene otra ruta
+const RUTA = '/reservas'
 
 export async function guardarReserva(reserva) {
     try {

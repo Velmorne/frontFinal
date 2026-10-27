@@ -3,13 +3,10 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSesion } from '../contexto/ContextoSesion.jsx'
 import { Logo } from './Logo.jsx'
 
-// Barra superior que se muestra en TODAS las páginas privadas.
-// Se pinta una sola vez desde LayoutPrivado, no desde cada página.
 export function BarraNavegacion() {
   const navegar = useNavigate()
   const { usuario, esAdministrador, cerrarSesion } = useSesion()
 
-  // En pantallas pequeñas el menú se abre y cierra con el botón ☰
   const [menuAbierto, setMenuAbierto] = useState(false)
 
   function salir() {
@@ -21,7 +18,6 @@ export function BarraNavegacion() {
     setMenuAbierto(false)
   }
 
-  // NavLink marca automáticamente como "active" el enlace de la página actual
   function claseEnlace({ isActive }) {
     return `nav-link ${isActive ? 'active fw-semibold' : ''}`
   }
@@ -60,7 +56,6 @@ export function BarraNavegacion() {
                 <i className="bi bi-calendar-check me-1"></i>Reservar
               </NavLink>
             </li>
-            {/* Solo el administrador ve la opción de crear espacios */}
             {esAdministrador && (
               <li className="nav-item">
                 <NavLink to="/espacios" className={claseEnlace} onClick={cerrarMenu}>

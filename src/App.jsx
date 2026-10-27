@@ -15,26 +15,21 @@ export function App() {
     <ProveedorSesion>
       <BrowserRouter>
         <Routes>
-          {/* Rutas publicas: cualquiera puede entrar */}
           <Route path="/" element={<RegistroUsuario />} />
           <Route path="/login" element={<Login />} />
 
-          {/* Rutas privadas: solo usuarios logueados */}
           <Route element={<RutaPrivada />}>
-            {/* LayoutPrivado pinta la barra de navegación en todas estas páginas */}
             <Route element={<LayoutPrivado />}>
               <Route path="/home" element={<Home />} />
               <Route path="/reservas" element={<RegistroReserva />} />
               <Route path="/listaespacios" element={<ListaEspacios />} />
 
-              {/* Rutas por rol: solo ADMINISTRADOR */}
               <Route element={<RutaPorRol rolesPermitidos={['ADMINISTRADOR']} />}>
                 <Route path="/espacios" element={<RegistroEspacio />} />
               </Route>
             </Route>
           </Route>
 
-          {/* Cualquier otra ruta */}
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </BrowserRouter>

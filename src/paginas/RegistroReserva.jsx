@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { PanelFormulario } from '../componentes/PanelFormulario'
 import { useSesion } from '../contexto/ContextoSesion.jsx'
 import { guardarReserva } from '../services/servicioReservas.js'
-import { obtenerEspacios } from '../services/servicioEspacios.js' // Asumiendo que creaste este método
+import { obtenerEspacios } from '../services/servicioEspacios.js' 
 
 const IMAGEN = 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1400&q=80'
 
 export function RegistroReserva() {
   const navegar = useNavigate()
-  const { usuario } = useSesion() // Obtenemos el usuario activo
+  const { usuario } = useSesion() 
 
-  // 1. Añadimos espacioId al estado
   const [reserva, setReserva] = useState({
     espacioId: '',
     fecha: '',
@@ -22,7 +21,6 @@ export function RegistroReserva() {
   const [errores, setErrores] = useState({})
   const [errorApi, setErrorApi] = useState('')
 
-  // 2. Cargar espacios al montar el componente
   useEffect(() => {
     const cargarEspacios = async () => {
       try {
@@ -63,7 +61,6 @@ export function RegistroReserva() {
     return nuevosErrores
   }
 
-  // 3. Conectar con el backend
   async function manejarEnvio(evento) {
     evento.preventDefault()
     const nuevosErrores = validar()
@@ -75,7 +72,6 @@ export function RegistroReserva() {
 
     setErrorApi('')
     try {
-      // Ensamblamos el objeto tal como lo espera Java
 
       const reservaAEnviar = {
         date: reserva.fecha,
@@ -108,7 +104,6 @@ export function RegistroReserva() {
 
       <form onSubmit={manejarEnvio} noValidate>
 
-        {/* Nuevo campo: Selector de Espacios */}
         <div className="mb-3">
           <label className="form-label fw-semibold">Espacio</label>
           <div className="input-group has-validation">

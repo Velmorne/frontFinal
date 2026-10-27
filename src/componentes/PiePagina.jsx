@@ -1,6 +1,5 @@
 import { Logo } from './Logo.jsx'
 
-// Pie de página común a todas las páginas privadas (se pinta desde LayoutPrivado)
 export function PiePagina() {
   return (
     <footer className="bg-dark text-white py-4 mt-auto">

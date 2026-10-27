@@ -44,41 +44,28 @@ export function RegistroUsuario() {
     return nuevosErrores
   }
 
-
-  //OJO funcion para activar el API y enviarle datos
   async function manejarEnvio(evento){
 
-    //evito que se recargue el formulario
     evento.preventDefault()
 
-    //valido formulario
     const nuevosErrores=validar()
     setErrores(nuevosErrores)
     if(Object.keys(nuevosErrores).length>0){
       return null
     }
 
-    //Todo ok voy a a intentar enviar los datos al API
     setErrorApi('')
     try{
       const usuarioGuardado = await guardarUsuario(usuario)
-      //El API devuelve el usuario creado (sin contraseña): lo dejamos logueado
       guardarSesion(usuarioGuardado)
       navegar('/home')
 
     }catch(error){
-      //Si el API respondio, el mensaje viene en error.response.data
-      //Usamos || porque Spring puede mandar message vacio ("")
       const mensaje = error.response?.data?.message
                    || 'No fue posible registrar el usuario'
       setErrorApi(mensaje)
     }
-
-
-
   }
-
-
 
   return (
     <PanelFormulario

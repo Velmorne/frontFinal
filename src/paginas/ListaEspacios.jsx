@@ -6,14 +6,12 @@ export function ListaEspacios() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
-  // useEffect ejecuta la petición HTTP apenas el componente se carga en pantalla
   useEffect(() => {
     cargarDatos();
   }, []);
 
   const cargarDatos = async () => {
     try {
-      // Llama a la función del servicio que configuraste con Axios
       const data = await obtenerEspacios();
       setEspacios(data);
     } catch (err) {
